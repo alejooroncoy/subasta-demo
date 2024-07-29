@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import Auction from "./Auction";
 import { Toaster } from "./ui/toaster";
 
-type Props = {}
+type Props = {
+  formattedNumber: number
+}
 
-const Auctions = (props: Props) => {
+const Auctions = ({ formattedNumber }: Props) => {
 
   const [auctions, setActuions] = useState<QueryDocumentSnapshot<DocumentData, DocumentData>[]>([]);
 
@@ -22,14 +24,14 @@ const Auctions = (props: Props) => {
   }, []);
   return (
     <section className="max-w-4xl mx-auto py-8">
-      <div className="gap-3 flex flex-col px-3 md:px-0">
+      <div className="gap-3 flex flex-col px-4 md:px-0">
         <h2 className="text-2xl font-semibold">Subastas del día</h2>
         <div>
           {
             auctions.map((auction) => {
               const data = auction.data();
               return (
-                <Auction key={auction.id} refAuction={auction} auction={data} />
+                <Auction key={auction.id} formattedNumber={formattedNumber} refAuction={auction} auction={data} />
               )
             })
           }

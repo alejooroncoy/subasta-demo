@@ -11,14 +11,14 @@ const page = (props: Props) => {
 
   return (
     <main className="flex-1">
-      <section className="max-w-4xl mx-auto px-3 md:px-0">
+      <section className="max-w-4xl mx-auto px-4 md:px-0">
         <Card>
           <CardContent className="py-8">
             <h2 className="text-3xl font-bold">Bienvenido user#{formattedNumber}</h2>
           </CardContent>
         </Card>
       </section>
-      <Auctions />
+      <Auctions formattedNumber={formattedNumber} />
     </main>
   );
 };
